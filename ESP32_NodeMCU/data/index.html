@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="/style.css">
+
+<title>Smart AC</title>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Smart AC</h1>
+
+<h2 id="clock">
+00:00:00
+</h2>
+
+<!-- ========================= -->
+<!-- SENSOR DATA -->
+<!-- ========================= -->
+
+<div id="temp">-- °C</div>
+
+<div id="pressure">-- hPa</div>
+
+<hr>
+
+<!-- ========================= -->
+<!-- AC STATUS -->
+<!-- ========================= -->
+
+<h3>
+AC:
+<span id="acstate">
+OFF
+</span>
+</h3>
+
+<h3>
+<span id="mode">
+COOL
+</span>
+ /
+<span id="fan">
+AUTO
+</span>
+</h3>
+
+<h3>
+Sleep:
+<span id="sleepstatus">
+OFF
+</span>
+</h3>
+
+<h3>
+Cycle:
+<span id="cyclestatus">
+OFF
+</span>
+-
+<span id="cyclecount">
+0 / 0
+</span>
+</h3>
+
+<h3>
+Auto:
+<span id="automodestatus">
+OFF
+</span>
+</h3>
+
+<hr>
+
+<!-- ========================= -->
+<!-- POWER -->
+<!-- ========================= -->
+
+<div class="button-group">
+
+<button onclick="acOn()">AC ON</button>
+
+<button onclick="acOff()">AC OFF</button>
+
+</div>
+
+<hr>
+
+<!-- ========================= -->
+<!-- TEMPERATURE -->
+<!-- ========================= -->
+
+<h2>
+Set Temp:
+<span id="settemp">
+24
+</span> °C
+</h2>
+
+<div class="button-group">
+
+<button onclick="tempDown()">-</button>
+
+<button onclick="tempUp()">+</button>
+
+</div>
+
+<hr>
+
+<div class="grid-buttons">
+
+<button id="powerfulbtn" onclick="togglePowerful()">
+POWER
+</button>
+
+<button id="econobtn" onclick="toggleEcono()">
+ECONO
+</button>
+
+<button id="quietbtn" onclick="toggleQuiet()">
+QUIET
+</button>
+
+</div>
+
+<br>
+
+<div class="grid-buttons">
+
+<button id="swinghbtn" onclick="toggleSwingH()">
+HORIZON
+</button>
+
+<button id="coandabtn" onclick="toggleCoanda()">
+COANDA
+</button>
+
+<button id="swingvbtn" onclick="toggleSwingV()">
+VERTI
+</button>
+
+</div>
+
+<hr>
+<!-- ========================= -->
+<!-- FAN -->
+<!-- ========================= -->
+
+<h3>Fan Speed</h3>
+
+<div class="grid-buttons">
+
+<button onclick="setFan('auto')">AUTO</button>
+
+<button onclick="setFan(1)">1</button>
+
+<button onclick="setFan(2)">2</button>
+
+<button onclick="setFan(3)">3</button>
+
+<button onclick="setFan(4)">4</button>
+
+<button onclick="setFan(5)">5</button>
+
+</div>
+
+<hr>
+
+<!-- ========================= -->
+<!-- MODE -->
+<!-- ========================= -->
+
+<h3>Mode</h3>
+
+<div class="grid-buttons">
+
+<button onclick="setMode('cool')">COOL</button>
+
+<button onclick="setMode('fan')">FAN</button>
+
+<button onclick="setMode('dry')">DRY</button>
+
+</div>
+
+<hr>
+
+<!-- ========================= -->
+<!-- CYCLICAL TIMER -->
+<!-- ========================= -->
+
+<h3>Cyclical Timer</h3>
+
+ON TIME (MIN)
+
+<input id="cycleon"
+type="number"
+value="20">
+<br><br>
+
+OFF TIME (MIN)
+
+<input id="cycleoff"
+type="number"
+value="10">
+
+<br><br>
+
+CYCLES (No)
+
+<input id="cyclenum"
+type="number"
+value="5">
+
+<br><br>
+
+<div class="button-group">
+
+<button onclick="startCycle()">
+START CYCLE
+</button>
+
+<button onclick="stopCycle()">
+STOP CYCLE
+</button>
+
+</div>
+
+<hr>
+
+<!-- ========================= -->
+<!-- AUTO OFF -->
+<!-- ========================= -->
+
+<h3 id="automodebtn" class="mode-heading" onclick="toggleAutoMode()">
+Auto Mode
+</h3>
+
+TURN ON AT
+
+<input id="autoon"
+type="number"
+step="0.5"
+value="30">
+
+<br><br>
+
+TURN OFF AT
+
+<input id="autooff"
+type="number"
+step="0.5"
+value="27">
+
+<br><br>
+
+<hr>
+
+<!-- ========================= -->
+<!-- AUTO OFF -->
+<!-- ========================= -->
+
+<h3>Auto OFF</h3>
+
+<div class="grid-buttons">
+
+<button onclick="autoOff(15)">15 Min</button>
+
+<button onclick="autoOff(30)">30 Min</button>
+
+<button onclick="autoOff(60)">1 Hour</button>
+
+</div>
+
+<hr>
+
+<!-- ========================= -->
+<!-- ADVANCED SLEEP MODE -->
+<!-- ========================= -->
+
+<h3>Sleep Mode</h3>
+
+Increase Temp Every
+
+<select id="sleephours">
+
+<option value="1">
+1 Hour
+</option>
+
+<option value="2">
+2 Hours
+</option>
+
+<option value="3">
+3 Hours
+</option>
+
+</select>
+
+<br><br>
+
+Max Temp Before OFF
+
+<input id="sleepmax"
+type="number"
+value="31">
+
+<br><br>
+
+<div class="button-group">
+
+<button onclick="startSleep()">
+START SLEEP
+</button>
+
+<button onclick="stopSleep()">
+STOP SLEEP
+</button>
+
+</div>
+
+<hr>
+
+<h3>AJMO</h3>
+
+</div>
+
+<script src="/app.js"></script>
+
+</body>
+</html>
